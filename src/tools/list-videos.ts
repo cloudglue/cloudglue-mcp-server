@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CloudGlue } from "@aviaryhq/cloudglue-js";
+import { Cloudglue } from "@cloudglue/cloudglue-js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export const schema = {
@@ -32,7 +32,7 @@ export const schema = {
     .optional(),
 };
 
-export function registerListVideos(server: McpServer, cgClient: CloudGlue) {
+export function registerListVideos(server: McpServer, cgClient: Cloudglue) {
   server.tool(
     "list_videos",
     "Browse and search video metadata with powerful filtering options. Use this to explore available videos, find specific content by date, or see what's in a collection. Returns essential video info like duration, filename, and IDs needed for other tools. Results are paginated in 25 videos per page - use the 'page' parameter to retrieve specific pages (page 0 = first 25 videos, page 1 = next 25 videos, etc.). Each response includes `page` and `total_pages` fields. Use date filtering to focus on specific time periods, then paginate within those results.",

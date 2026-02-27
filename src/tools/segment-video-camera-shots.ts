@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CloudGlue } from "@aviaryhq/cloudglue-js";
+import { Cloudglue } from "@cloudglue/cloudglue-js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export const schema = {
@@ -25,7 +25,7 @@ function formatTime(seconds: number): string {
 
 export function registerSegmentVideoCameraShots(
   server: McpServer,
-  cgClient: CloudGlue,
+  cgClient: Cloudglue,
 ) {
   server.tool(
     "segment_video_camera_shots",
@@ -76,9 +76,11 @@ export function registerSegmentVideoCameraShots(
         });
 
         if (existingJobs.data && existingJobs.data.length > 0) {
-          const job = existingJobs.data[0];
-          if (job.segments && job.segments.length > 0) {
-            const segments = job.segments.map((segment) => ({
+          const fullJob = await cgClient.segments.getSegmentJob(
+            existingJobs.data[0].job_id,
+          );
+          if (fullJob.segments && fullJob.segments.length > 0) {
+            const segments = fullJob.segments.map((segment) => ({
               start_time: segment.start_time,
               end_time: segment.end_time,
               start_time_formatted: formatTime(segment.start_time),
@@ -94,7 +96,7 @@ export function registerSegmentVideoCameraShots(
                     {
                       url: url,
                       segments: segments,
-                      total_shots: job.segments.length,
+                      total_shots: fullJob.segments.length,
                       source: "existing",
                     },
                     null,

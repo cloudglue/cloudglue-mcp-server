@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CloudGlue } from "@aviaryhq/cloudglue-js";
+import { Cloudglue } from "@cloudglue/cloudglue-js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export const schema = {
@@ -31,7 +31,7 @@ function formatTime(seconds: number): string {
 
 export function registerSegmentVideoChapters(
   server: McpServer,
-  cgClient: CloudGlue,
+  cgClient: Cloudglue,
 ) {
   server.tool(
     "segment_video_chapters",
@@ -75,14 +75,18 @@ export function registerSegmentVideoChapters(
         });
 
         if (existingJobs.data && existingJobs.data.length > 0) {
-          const job = existingJobs.data[0];
-          if (job.segments && job.segments.length > 0) {
-            const chapters = job.segments.map((segment, index) => ({
-              chapter_number: index + 1,
-              start_time: segment.start_time,
-              start_time_formatted: formatTime(segment.start_time),
-              description: segment.description || `Chapter ${index + 1}`,
-            }));
+          const fullJob = await cgClient.segments.getSegmentJob(
+            existingJobs.data[0].job_id,
+          );
+          if (fullJob.segments && fullJob.segments.length > 0) {
+            const chapters = fullJob.segments.map(
+              (segment: { start_time: number; description?: string }, index: number) => ({
+                chapter_number: index + 1,
+                start_time: segment.start_time,
+                start_time_formatted: formatTime(segment.start_time),
+                description: segment.description || `Chapter ${index + 1}`,
+              }),
+            );
 
             return {
               content: [
@@ -92,7 +96,7 @@ export function registerSegmentVideoChapters(
                     {
                       url: url,
                       chapters: chapters,
-                      total_chapters: job.segments.length,
+                      total_chapters: fullJob.segments.length,
                       source: "existing",
                       ...(prompt && { prompt: prompt }),
                     },

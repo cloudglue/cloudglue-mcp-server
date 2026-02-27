@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CloudGlue } from "@aviaryhq/cloudglue-js";
+import { Cloudglue } from "@cloudglue/cloudglue-js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export const schema = {
@@ -39,7 +39,7 @@ function extractFileIdFromUrl(url: string): string | null {
 
 export function registerExtractVideoEntities(
   server: McpServer,
-  cgClient: CloudGlue,
+  cgClient: Cloudglue,
 ) {
   server.tool(
     "extract_video_entities",
@@ -295,6 +295,7 @@ export function registerExtractVideoEntities(
       // Step 3: Create new entity extraction
       try {
         const extractJob = await cgClient.extract.createExtract(url, {
+          url: url,
           prompt: prompt,
           enable_segment_level_entities: true,
           enable_video_level_entities: true,
