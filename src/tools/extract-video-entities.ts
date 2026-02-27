@@ -295,11 +295,10 @@ export function registerExtractVideoEntities(
       // Step 3: Create new entity extraction
       try {
         const extractJob = await cgClient.extract.createExtract(url, {
-          url: url,
           prompt: prompt,
-          enable_segment_level_entities: true,
           enable_video_level_entities: true,
-        });
+          enable_segment_level_entities: false,
+        } as any);
 
         // Wait for completion using SDK's waitForReady method
         const completedJob = await cgClient.extract.waitForReady(
