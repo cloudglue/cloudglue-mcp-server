@@ -1,6 +1,6 @@
 # Cloudglue MCP Server
 
-[![NPM Version](https://img.shields.io/npm/v/%40aviaryhq%2Fcloudglue-mcp-server)](https://www.npmjs.com/package/@aviaryhq/cloudglue-mcp-server)
+[![NPM Version](https://img.shields.io/npm/v/%40cloudglue%2Fcloudglue-mcp-server)](https://www.npmjs.com/package/@cloudglue/cloudglue-mcp-server)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 ![MCP](https://badge.mcpx.dev?status=on 'MCP Enabled')
 [![Discord](https://img.shields.io/discord/1366541583272382536?logo=discord&label=Discord)](https://discord.gg/QD5KWFVner)
@@ -34,7 +34,7 @@ Most MCP clients store their configuration as JSON. For `cloudglue-mcp-server` t
       "command": "npx",
       "args": [
         "-y",
-        "@aviaryhq/cloudglue-mcp-server@latest",
+        "@cloudglue/cloudglue-mcp-server@latest",
         "--api-key",
         "<CLOUDGLUE-YOUR-API-KEY>"
       ]
@@ -52,7 +52,7 @@ Replace `<CLOUDGLUE-YOUR-API-KEY>` with the API Key created earlier.
   <img src="./assets/claude-desktop-2.png" width="40%" alt="Claude Desktop Extension Installation Step 2">
 </div>
 
-1. Download the latest Cloudglue Claude Desktop Extension from [the releases page](https://github.com/aviaryhq/cloudglue-mcp-server/releases/latest/download/cloudglue-mcp-server.mcpb)
+1. Download the latest Cloudglue Claude Desktop Extension from [the releases page](https://github.com/cloudglue/cloudglue-mcp-server/releases/latest/download/cloudglue-mcp-server.mcpb)
 2. Double click to open with Claude Desktop (you need to have Claude Desktop running prior to this)
 3. Click 'Install'
 4. When prompted, enter your API key
@@ -193,5 +193,5 @@ All tools include intelligent features like cost optimization, automatic fallbac
 
 ## Contact
 
-- [Open an Issue](https://github.com/aviaryhq/cloudglue-mcp-server/issues/new)
+- [Open an Issue](https://github.com/cloudglue/cloudglue-mcp-server/issues/new)
 - [Email](mailto:support@cloudglue.dev)

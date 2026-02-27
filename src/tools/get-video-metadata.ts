@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CloudGlue } from "@aviaryhq/cloudglue-js";
+import { Cloudglue } from "@cloudglue/cloudglue-js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export const schema = {
@@ -12,7 +12,7 @@ export const schema = {
 
 export function registerGetVideoMetadata(
   server: McpServer,
-  cgClient: CloudGlue,
+  cgClient: Cloudglue,
 ) {
   server.tool(
     "get_video_metadata",

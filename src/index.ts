@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { CloudGlue } from "@aviaryhq/cloudglue-js";
+import { Cloudglue } from "@cloudglue/cloudglue-js";
 import * as dotenv from "dotenv";
 import { parseArgs } from "node:util";
 
@@ -35,7 +35,7 @@ dotenv.config();
 const apiKey = args["api-key"] || process.env.CLOUDGLUE_API_KEY;
 const baseUrl = args["base-url"] || process.env.CLOUDGLUE_BASE_URL;
 
-const cgClient = new CloudGlue({
+const cgClient = new Cloudglue({
   apiKey,
   baseUrl,
 });
@@ -43,7 +43,7 @@ const cgClient = new CloudGlue({
 // Create server instance
 const server = new McpServer({
   name: "cloudglue-mcp-server",
-  version: "0.2.3",
+  version: "0.3.0",
 });
 
 // Register all tools

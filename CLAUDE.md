@@ -23,7 +23,7 @@ No dedicated test or lint commands are currently defined.
 
 ## Architecture
 
-**Entry Point:** `src/index.ts` initializes the McpServer, creates the CloudGlue client (via `@aviaryhq/cloudglue-js` SDK), registers all tools, and connects via stdio transport.
+**Entry Point:** `src/index.ts` initializes the McpServer, creates the Cloudglue client (via `@cloudglue/cloudglue-js` SDK), registers all tools, and connects via stdio transport.
 
 **Tool Pattern:** Each tool in `src/tools/` is a self-contained module that exports:
 - A Zod `schema` for input validation
