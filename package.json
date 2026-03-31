@@ -1,7 +1,7 @@
 {
   "name": "@cloudglue/cloudglue-mcp-server",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "bin": {
     "cloudglue-mcp-server": "build/index.js"
@@ -25,13 +25,13 @@
   "description": "Cloudglue MCP Server",
   "dependencies": {
     "@cloudglue/cloudglue-js": "^0.7.0",
-    "@modelcontextprotocol/sdk": "^1.20.2",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "dotenv": "^16.4.7",
     "shx": "^0.4.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@anthropic-ai/mcpb": "^1.1.1",
+    "@anthropic-ai/mcpb": "^2.1.2",
     "@types/node": "^22.14.1",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
