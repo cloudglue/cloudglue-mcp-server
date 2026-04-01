@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.2",
   "name": "@cloudglue/cloudglue-mcp-server",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Cloudglue MCP Server",
   "icon": "assets/icon.png",
   "author": {
